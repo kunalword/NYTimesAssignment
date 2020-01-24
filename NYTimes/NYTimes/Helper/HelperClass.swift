@@ -30,8 +30,6 @@ class HelperClass: NSObject {
     }
 
     
-    
-    
     func OpenURL (_ urlStr:NSString) {
         
         let url = URL(string: urlStr as String)!
@@ -100,7 +98,19 @@ class HelperClass: NSObject {
     }
     
   
-    
+    func getImageUrl(newsModel: NewsListViewModel) -> String{
+            var urlString : String = ""
+           if let media = newsModel.media {
+               if media.count > 0 {
+                   if media[0].mediaMetadata.count > 0 {
+                       urlString = media[0].mediaMetadata[0].url ?? ""
+                   }
+               }
+               print("media",urlString)
+
+           }
+           return urlString
+       }
 
     
 }

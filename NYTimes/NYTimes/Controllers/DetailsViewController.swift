@@ -22,14 +22,21 @@ class DetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print(dataListArray)
-        print(selectedIndex)
         // Do any additional setup after loading the view.
         
+        let newsList = newsDataListArray[selectedIndex]
+        self.titleLabel?.text = newsList.title
+        self.detailsTextView?.text = newsList.abstract
         
+        let imageURL = HelperClass.sharedInstance().getImageUrl(newsModel: newsList)
+         DispatchQueue.global().async {
+                         let data = try? Data(contentsOf: URL(string: imageURL)!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+                         DispatchQueue.main.async {
+                          self.imageView.image = UIImage(data: data!)
+                         }
+                     }
         
-        
+        /*
         //get valuse from array to dic
                let resultsDic = dataListArray[selectedIndex] as! NSDictionary
                
@@ -58,7 +65,7 @@ class DetailsViewController: UIViewController {
                    }
                }
                
- 
+        */
                
     }
 

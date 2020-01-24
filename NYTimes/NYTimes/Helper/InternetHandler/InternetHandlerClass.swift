@@ -44,18 +44,6 @@ class InternetHandlerClass: NSObject {
         
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
       private var reachability:Reachability!;
     
     func startReachability () {
